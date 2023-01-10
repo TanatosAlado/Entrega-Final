@@ -16,7 +16,7 @@ const { db } = require("./src/schema/schemaProducts.js");
 
 const {routerCarrito} = require("./src/routes/carros")
 const {routerProducto} = require("./src/routes/productos")
-
+const {routerMensajes} = require("./src/routes/mensajes")
 
 //="="="="="=""="=="="="==""="
 
@@ -74,7 +74,7 @@ app.set("view engine", "html")
   app.use(express.urlencoded({ extended: true }));
   app.use('/productos', routerProducto);
   app.use('/carritos', routerCarrito);
-  // app.use('/mensajes', routerMensajes);
+  app.use('/mensajes', routerMensajes);
   
 
   app.use(session({

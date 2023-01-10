@@ -1,4 +1,4 @@
-const messagesMongoController=require('../../controllers/mongo/messagesMongo.js')
+const messagesMongoController=require('../controllers/mensajes')
 
 class messagesDaoMongo extends messagesMongoController{
     constructor(){
