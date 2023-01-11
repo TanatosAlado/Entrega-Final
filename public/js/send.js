@@ -4,10 +4,8 @@ const {normalizeMsj}=require("../../src/controllers/normalizr.js")
 const nodemailer= require('nodemailer');
 const { db } = require("../../src/schema/schemaMessages.js");
 const message =require ("../../src/schema/schemaMessages.js")
-const {
-  loggerDev,
-  loggerProd
-} = require("../../logger_config");
+const { loggerDev, loggerProd } = require("../../logger_config");
+require("dotenv").config()
 const NODE_ENV = process.env.NODE_ENV || "development";
 const logger = NODE_ENV === "production"
 ? loggerProd
@@ -26,8 +24,8 @@ const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.email',
   port: 587,
   auth: {
-      user: 'cybernanox@gmail.com',
-      pass: "itvptxxbnvqeudhn"
+      user: process.env.MYMAIL,
+      pass: process.env.MYPASS
   }
 });
 

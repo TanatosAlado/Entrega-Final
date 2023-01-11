@@ -7,6 +7,12 @@
     margin-left: 10%;
 }
 
+.bienvenida img{
+    width: 80%;
+    margin-left: 10%;
+    margin-bottom: 50px;
+}
+
 .infoServer{
     color: white;
     text-align: center;
@@ -14,6 +20,11 @@
 
 .title {
     color: blue;
+    text-align: center;
+}
+
+.title2 {
+    color: white;
     text-align: center;
 }
 
@@ -63,8 +74,8 @@ table,
 }
 
 .titleLogin{
-    color: blue;
-    text-align: left;
+    color: white;
+    text-align: center;
 }
 
 .header {
@@ -76,17 +87,6 @@ table,
 .centrar_form {
     margin-left: 25%
 }
-
-/* #id,
-#text,
-#nombre,
-#apellido,
-#avatar,
-#edad,
-#avatar,
-#alias {
-    background-color: lightyellow;
-} */
 
 .tamaño {
     width: 40px;
@@ -112,7 +112,7 @@ table,
     width: 50px;
 }
 
-.spinner {
+/* .spinner {
     display: none;
     position: absolute;
     top: 30vh;
@@ -137,4 +137,4 @@ table,
     100% {
       transform: rotate(360deg);
     }
-  }
+  } */

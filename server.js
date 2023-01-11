@@ -8,7 +8,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const passport = require("passport");
 const { comparePassword, hashPassword } = require("./src/services/utils")
 const { Types } = require("mongoose");
-// const {saveMsjs, getMsjs, sendWhatsapp, sendMail, sendSms,deleteCartBuy}=require ("./src/controllers/mensajes.js")
 const {saveMsjs, getMsjs, sendWhatsapp, sendMail, sendSms,deleteCartBuy}=require ("./public/js/send")
 const nodemailer= require('nodemailer');
 const { argv0 } = require("process");
@@ -192,19 +191,15 @@ app.get('/buyCart', async(req, res) => {
   process.env.id=req.user.id;
   process.env.name=req.user.name
   process.env.phone=req.user.phone
-  // const idProductos=process.env.id
+  process.env.address=req.user.address
    const id=parseInt( process.env.id)
-
   const productos=await db.collection("carts").findOne({id:id})
-  console.log(productos)
   const mail = process.env.USER;
-  const phone=process.env.phone
+  const direction=process.env.address
   const name= process.env.name
-       sendWhatsapp(name,mail)
-       sendMail(name,mail,JSON.stringify(productos))
-       sendSms(phone)
-       deleteCartBuy(id)
-  res.redirect("/buySuccessfull")
+  sendMail(id,name,mail,JSON.stringify(productos),direction)
+  deleteCartBuy(id)
+  res.redirect("/buySuccesfull")
   logger.log("info",`Ingreso a la ruta${req.url}`)
   
 
@@ -252,7 +247,7 @@ app.get('/buyCart', async(req, res) => {
 
 //---------------------------------------------------------
 
-    app.get("/buySuccessfull", (req, res) => {
+    app.get("/buySuccesfull", (req, res) => {
       res.sendFile(__dirname + "/views/buyCart.html");
       logger.log("info",`Ingreso a la ruta${req.url}`)
     });

@@ -127,15 +127,16 @@ document.getElementById("logout").addEventListener
     ('click', (e) => {
         e.preventDefault()
         fetch("/logout")
-            .then(spinner.style.display = "flex")
+            // .then(spinner.style.display = "flex")
             .then(response => response.json())
             .finally(() => {
                 window.location.href = "/logoutMsj";
             })
     })
+
 //loading screen
-const spinner = document.getElementById("spinner");
-spinner.style.display = "none";
+// const spinner = document.getElementById("spinner");
+// spinner.style.display = "none";
 
 
 

@@ -12,4 +12,6 @@ Tengo 3 usuarios registrados:
 
 
 Consideraciones mensajes: 
-- Por cada nuevo mensaje en el chat, se crea automaticamente un guion ( - ) en el campo respuesta, indicando que aún no fue respondida.
+- Por cada nuevo mensaje en el chat, se crea automaticamente un guion ( - ) en el campo respuesta, indicando que aún no fue respondida. (Se puede editar esa respuesta)
+
+
