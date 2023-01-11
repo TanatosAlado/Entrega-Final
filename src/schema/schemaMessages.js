@@ -7,7 +7,7 @@ const messagesSchema = new Schema({
         apellido: { type: String, required: true, max: 50 },
         edad: { type: Number, required: true },
         alias: { type: String, required: true },
-        avatar: { type: String, required: true, max: 100 },
+        avatar: { type: String, required: true, max: 300 },
         timestamp: { type: Date, default: Date.now },
         pregunta: { type: String, required: true, max: 400 },
         respuesta: { type: String, required: true, max: 400 }

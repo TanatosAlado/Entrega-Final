@@ -17,7 +17,6 @@ module.exports=class ProdMongoController {
 
     save = async (element) => {
         try {
-            element.timestamp = new Date().toISOString();
             const newElement = new this.collection(element);
             const result = await newElement.save();
             return result;

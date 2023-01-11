@@ -48,7 +48,6 @@ module.exports=class CartMongoController {
 
     addProduct = async (id, newElement) => {
         try {
-
             const cart = await this.getAllCart();
             const cartIndex = cart.findIndex((e) => e.id === Number(id));
             const productsInCart = cart[cartIndex].productos;
@@ -56,9 +55,9 @@ module.exports=class CartMongoController {
                 newElement.id = 1;
             } else 
             {
-                   const LastId=(productsInCart.length)-1
-                   const carro=(productsInCart[LastId].id)+1
-                   newElement.id = carro;
+                const LastId=(productsInCart.length)-1
+                const carro=(productsInCart[LastId].id)+1
+                newElement.id = carro;
             }
             newElement.timestamp = Date.now();
             productsInCart.push(newElement);

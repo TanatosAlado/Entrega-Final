@@ -41,7 +41,6 @@ const saveMsjs = async (msj) => {
 }
 
 //TRAE LOS MENSAJES DEL CHAT
-
 const getMsjs = async () => {
     try {
         const mensajes = await message.find();
@@ -51,8 +50,7 @@ const getMsjs = async () => {
     }
 }
 
-//FUNCION QUE ENVIA MAIL AL REALIZAR LA COMPRA DEL CARRO
-
+//Funcion que envía detalle de la compra
 async function sendMail(id,name,mail,listCart,direction) {
     try {
         await transporter.sendMail({
@@ -69,8 +67,7 @@ async function sendMail(id,name,mail,listCart,direction) {
       }
     }
 
-  // FUNCION QUE ENVIA MAIL AL REALIZAR UN NUEVO REGISTRO DE USUARIO  
-
+  // Funcion que envía correo al nuevo usuario  
     async function newRegister(mail,user) {
       try {
           await transporter.sendMail({
@@ -84,8 +81,7 @@ async function sendMail(id,name,mail,listCart,direction) {
         }
       }
 
-    // FUNCION QUE VACIA EL CARRO UNA VEZ QUE SE REALIZA LA COMPRA  
-
+    // Vacío el carrito al realizar la compra, dejandolo creado para reutilizar 
     async function deleteCartBuy(idCart){
       try{
          await db.collection("carts").updateOne({id:idCart},{$pull:{"productos":{}}});

@@ -23,39 +23,20 @@ function renderTable(data) {
 }
 
 
-// function renderCart(data) {
-//     const table = document.getElementById("carrito");
-//     const html = data.map(element => {
-//         return (`<tr>
-//         <td>${element.nombre}</td>
-//         <td>${element.precio}</td>
-//         <td>${element.descripcion  }</td>
-//         <td>${element.stock}</td>
-//         <td><img src="${element.imagen}" style="height:50px"></td>
-//         </tr>`);
-//     }).join("");
-//     table.innerHTML += html;
-// }
-
-
 function renderCart(data) {
     const table = document.getElementById("carrito");
     const html = data.map(element => {
-        precioTotal=element.precio*element.cantidad
         return (`<tr>
         <td>${element.nombre}</td>
-        <td>$${element.precio}</td>
-        <td>${element.descripcion}</td>
-        <td>${element.categoria}</td>
-        <td>${element.cantidad}</td>
+        <td>${element.precio}</td>
+        <td>${element.descripcion  }</td>
+        <td>${element.stock}</td>
         <td><img src="${element.imagen}" style="height:50px"></td>
-        <td>$ ${precioTotal.toFixed(2)}</td>
-        </tr><br><br><br>
-        `);  
-    },
-    ).join("");
+        </tr>`);
+    }).join("");
     table.innerHTML += html;
 }
+
 
 
 const ingresoMensaje = document.getElementById("ingresoMensaje");

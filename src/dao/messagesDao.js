@@ -8,7 +8,7 @@ class messagesDaoMongo extends messagesMongoController{
                 apellido: { type: String, required: true, max: 50 },
                 edad: { type: Number, required: true },
                 alias: { type: String, required: true },
-                avatar: { type: String, required: true, max: 100 },
+                avatar: { type: String, required: true, max: 300 },
                 timestamp: { type: Date, default: Date.now },
                 text: { type: String, required: true, max: 400 },
                 pregunta: { type: String, required: true, max: 400 },

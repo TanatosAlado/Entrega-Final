@@ -9,7 +9,6 @@ class ProductosDaoMongo extends ProdMongoController{
             precio: {type: Number, required: true},
             stock: {type: Number, required: true},
             imagen:{type:String,required:true}
-            
         })
     }
 }
