@@ -22,7 +22,7 @@ const {routerMensajes} = require("./src/routes/mensajes")
 const {
   loggerDev,
   loggerProd
-} = require("./logger_config");
+} = require("./src/loggers/logger_config");
 
 const NODE_ENV = process.env.NODE_ENV || "development";
 const logger = NODE_ENV === "production"
@@ -66,6 +66,24 @@ if (modoCluster && cluster.isPrimary) {
 var engines= require("consolidate")
 app.engine("html", engines.swig)
 app.set("view engine", "html")
+
+
+// Inicio Handlebars
+const handlebars = require("express-handlebars");
+
+const hbs = handlebars.create({
+  extname: ".hbs",
+  defaultLayout: "index.hbs",
+  layoutsDir: __dirname + "/views",
+});
+
+app.engine("hbs", hbs.engine);
+app.set('views', "./Views");
+app.set("view engine", "hbs");
+
+// Fin Handlebars
+
+
 //--------------
   
   app.use("/public", express.static('./public/'));
@@ -244,7 +262,13 @@ app.get('/buyCart', async(req, res) => {
       logger.log("info",`Ingreso a la ruta${req.url}`)
     });
   
+//---------------------------------------------------------
+    
+app.get("/datos", (req, res) => {
 
+  res.render("index.hbs")
+  logger.log("info",`Ingreso a la ruta${req.url}`)
+});
 //---------------------------------------------------------
 
     app.get("/buySuccesfull", (req, res) => {
@@ -252,17 +276,22 @@ app.get('/buyCart', async(req, res) => {
       logger.log("info",`Ingreso a la ruta${req.url}`)
     });
 
+    app.get("/error", (req, res) => {
+      res.render("error.ejs",{error:"Error! Alguno de los datos es incorrecto"})
+      logger.log("info",`Ingreso a la ruta${req.url}`)
+    });
+
 //----------------------------------------------------------
   
     app.post("/signup", passport.authenticate("signup", {
-      failureRedirect: "/signupFail",
+      failureRedirect: "/error",
     }) , (req, res) => {  
       req.session.user = req.user;
       res.redirect("/login");
     });
     
     app.post("/login", passport.authenticate("login", {
-      failureRedirect: "/loginFail",
+      failureRedirect: "/error",
     }) ,(req, res) => {
         req.session.user = req.user;
         res.redirect('/cart');

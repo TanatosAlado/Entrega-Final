@@ -38,10 +38,15 @@ route('/:id/productos')
     const counterCart = await db.collection("carts").countDocuments();
     if (counterCart > 1){
         const products = await carrito.getById(req.params.id);
-        if (products.length > 0) {
-            res.status(200).json(products);
-        } else {
-            res.status(404).send({ message: "Carrito no encontrado" });
+        if (products) {
+            if (products.length > 0) {
+                res.status(200).json(products);
+            } else {
+                res.status(404).send({ message: "Carrito no encontrado" });
+            }
+        }
+        else {
+            res.status(404).send({ message: "Usuario sin carrito" });
         }
     }
 })

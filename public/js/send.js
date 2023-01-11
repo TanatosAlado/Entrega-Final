@@ -4,7 +4,7 @@ const {normalizeMsj}=require("../../src/controllers/normalizr.js")
 const nodemailer= require('nodemailer');
 const { db } = require("../../src/schema/schemaMessages.js");
 const message =require ("../../src/schema/schemaMessages.js")
-const { loggerDev, loggerProd } = require("../../logger_config");
+const { loggerDev, loggerProd } = require("../../src/loggers/logger_config");
 require("dotenv").config()
 const NODE_ENV = process.env.NODE_ENV || "development";
 const logger = NODE_ENV === "production"

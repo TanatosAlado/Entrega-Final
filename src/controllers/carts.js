@@ -5,7 +5,7 @@ const { db } = require("../schema/schemaUser");
 const {
     loggerDev,
     loggerProd
-  } = require("../../logger_config");
+  } = require("../loggers/logger_config");
   
   const NODE_ENV = process.env.NODE_ENV || "development";
   const logger = NODE_ENV === "production"
@@ -54,8 +54,11 @@ module.exports=class CartMongoController {
             const productsInCart = cart[cartIndex].productos;
             if (cart[cartIndex].productos.length === 0) {
                 newElement.id = 1;
-            } else {
-                newElement.id = cart[cartIndex].productos.length + 1;
+            } else 
+            {
+                   const LastId=(productsInCart.length)-1
+                   const carro=(productsInCart[LastId].id)+1
+                   newElement.id = carro;
             }
             newElement.timestamp = Date.now();
             productsInCart.push(newElement);
@@ -65,7 +68,7 @@ module.exports=class CartMongoController {
                     $set: { productos: productsInCart },
                 }
             )
-        } catch (error) {
+        }  catch(err) {
             logger.log("error",err)
         }
     }

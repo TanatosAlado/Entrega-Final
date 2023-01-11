@@ -2,25 +2,18 @@ const express=require("express");
 const mongoose=require("mongoose")
 const{Server:http}=require ("http");
 const {Server:ioServer}=require ("socket.io");
-const User=require("..//../src/schema/schemaUser.js")
-const {saveMsjs, getMsjs}=require ("../../src/controllers/mensajes.js")
-const session =require("express-session")
-const MongoStore=require("connect-mongo");
+const User=require("../../src/schema/schemaUser.js")
 const LocalStrategy = require('passport-local').Strategy;
 const passport = require("passport");
 const { comparePassword, hashPassword } = require("../services/utils")
-// const {connect} = require('./src/config/dbConfig.js');
 const { Types } = require("mongoose");
 
 const nodemailer= require('nodemailer');
 const { argv0 } = require("process");
 const { db } = require("..//..//src/schema/schemaProducts.js");
-const CarritoDaoMongo = require("../dao/cartDao.js");
-const { captureRejectionSymbol } = require("events");
 
 const app = express();
 const httpserver = http(app)
-const io = new ioServer(httpserver)
 
 module.exports=class userMongoController {
     constructor(collection, schema) {
@@ -56,14 +49,14 @@ passport.use("login", new LocalStrategy(async (mail, password, done) => {
   }
 
   if(req.body.password===req.body.password2){
-    if(countUser===10000){  
+    if(countUser===1){  
       const id=1;  
       const address = req.body.address;
       const name = req.body.names;
       const direction = req.body.direction;
       const age = req.body.age;
       const phone = req.body.phone;
-      const avatar =`../public/images/${req.body.avatar}` ;
+      const avatar =req.body.avatar ;
       const hashedPassword = hashPassword(password);
       const newUser = new User({ id, mail, password: hashedPassword , address,name,direction,age,phone,avatar });
       await newUser.save();
@@ -77,7 +70,7 @@ passport.use("login", new LocalStrategy(async (mail, password, done) => {
       const direction = req.body.direction;
       const age = req.body.age;
       const phone = req.body.phone;
-      const avatar =`../public/images/${req.body.avatar}` ;
+      const avatar =req.body.avatar;
       const hashedPassword = hashPassword(password);
       const newUser = new User({ id,mail, password: hashedPassword , address,name,direction,age,phone,avatar });
       await newUser.save();
@@ -121,8 +114,8 @@ passport.use("login", new LocalStrategy(async (mail, password, done) => {
     host: 'smtp.gmail.email',
     port: 587,
     auth: {
-        user: 'andreshosch114@gmail.com',
-        pass: "pripxpboynmzhqev"
+        user: 'cybernanox@gmail.com',
+        pass: "itvptxxbnvqeudhn"
     }
   });
   

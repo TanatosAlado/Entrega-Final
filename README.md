@@ -11,7 +11,10 @@ Tengo 3 usuarios registrados:
     - pass: Cristian
 
 
-Consideraciones mensajes: 
-- Por cada nuevo mensaje en el chat, se crea automaticamente un guion ( - ) en el campo respuesta, indicando que aún no fue respondida. (Se puede editar esa respuesta)
+* Consideraciones mensajes: 
+    - Por cada nuevo mensaje en el chat, se crea automaticamente un guion ( - ) en el campo respuesta, indicando que aún no fue respondida. (Se puede editar esa respuesta)
+
+* En el archivo .env se puede configurar todo lo solicitado:
+    - PORT, URL_DB, MAIL, PASS, etc... 
 
 

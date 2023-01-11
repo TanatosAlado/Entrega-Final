@@ -10,8 +10,8 @@ const loggerDev = winston.createLogger({
 const loggerProd = winston.createLogger({
   level: "debug",
   transports: [
-    new winston.transports.File({filename: "warn.log", level: "warn"}),
-    new winston.transports.File({filename: "error.log", level: "error"})
+    new winston.transports.File({filename: "src/loggers/warn.log", level: "warn"}),
+    new winston.transports.File({filename: "src/loggers/error.log", level: "error"})
   ]
 });
 
